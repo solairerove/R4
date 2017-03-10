@@ -15,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
@@ -24,11 +24,11 @@ public class Main extends Application {
 
     public static void main(String[] args) throws IOException {
         Loader loader = new Loader();
-        Map<String, List<Double>> helthy = loader.loadData("file1.txt");
+        Map<String, List<Double>> healthy = loader.loadData("file1.txt");
         Map<String, List<Double>> ill = loader.loadData("file2.txt");
         List<VariantnessList> data = new ArrayList<>();
-        for(String key : helthy.keySet()){
-            List<List<Double>> tmp = Arrays.asList(ill.get(key), helthy.get(key));
+        for(String key : healthy.keySet()){
+            List<List<Double>> tmp = Arrays.asList(ill.get(key), healthy.get(key));
             data.add(new VariantnessList(tmp, key));
         }
         LemanRozenblutt leman = new LemanRozenblutt();
@@ -39,7 +39,7 @@ public class Main extends Application {
         List<Map<String, Double>> output = new ArrayList<>();
 
         for(VariantnessList variantnessList : data){
-            List<Double> list1 = helthy.get(variantnessList.getName());
+            List<Double> list1 = healthy.get(variantnessList.getName());
             List<Double> list2 = ill.get(variantnessList.getName());
             List<List<Double>> vis = new ArrayList<>();
             vis.add(list1);
