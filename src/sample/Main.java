@@ -52,7 +52,9 @@ public class Main extends Application {
             if(value > 0){
                 sb.append(value).append(" ");
                 sb.append(variantnessList.getName()).append(" ");
-                output.add((Map<String, Double>) new HashMap<>().put(variantnessList.getName(), value));
+                Map<String, Double> x = new HashMap<>();
+                x.put(variantnessList.getName(), value);
+                output.add(x);
                 sb.append("\n");
             }
             t++;
@@ -60,7 +62,6 @@ public class Main extends Application {
         /*CreateHtml(output);
         Drawer.addTail(js);
         Drawer.CreateFile(js.ToString());*/
-        String content = "Hello World !!";
         Files.write(Paths.get("out.txt"), String.valueOf(sb).getBytes());
         launch(args);
     }

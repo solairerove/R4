@@ -1,13 +1,12 @@
 package sample;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class VariantnessList {
 
     private String name;
-    private List<Double> all;
-    private Map<Double, Integer> state;
+    private List<Double> all = new ArrayList<>();
+    private Map<Double, Integer> state = new HashMap<>();
 
     public VariantnessList(List<List<Double>> data, String name) {
         this.name = name;
@@ -23,13 +22,11 @@ public class VariantnessList {
 
         state = new HashMap<>();
         for(Double d : unique){
-            Integer counter = 0;
+            long counter = 0;
             for(List<Double> doubles : data){
-                if(doubles.size() == d){
-                    counter += Math.toIntExact((long) doubles.stream().mapToDouble(Double::doubleValue).sum());
-                }
+                counter += doubles.stream().filter(x -> Objects.equals(x, d)).count();
             }
-            state.put(d, counter);
+            state.put(d, (int) counter);
         }
         Collections.sort(all);
     }
