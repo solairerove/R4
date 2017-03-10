@@ -6,9 +6,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class Loader {
+
+    public void loadRightFile() throws IOException {
+        InputStream is = new FileInputStream(new File("out.txt"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+        StringBuilder text = new StringBuilder();
+        List<String> lines = br.lines().collect(Collectors.toList());
+
+        for(String x : lines){
+            String[] i = x.split(" ");
+            Main.map.put(i[1], Double.valueOf(i[0]));
+        }
+    }
 
     private List<String> loadFile(String path) throws IOException {
         InputStream is = new FileInputStream(new File(path));

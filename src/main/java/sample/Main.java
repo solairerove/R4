@@ -83,7 +83,7 @@ public class Main extends Application {
                 sb.append(variantnessList.getName()).append(" ");
                 Map<String, Double> x = new HashMap<>();
                 x.put(variantnessList.getName(), value);
-                map.put(variantnessList.getName(), value);
+//                map.put(variantnessList.getName(), value);
                 output.add(x);
                 sb.append("\n");
             }
@@ -92,6 +92,7 @@ public class Main extends Application {
         /*CreateHtml(output);
         Drawer.addTail(js);
         Drawer.CreateFile(js.ToString());*/
+        loader.loadRightFile();
         Files.write(Paths.get("outtest.txt"), String.valueOf(sb).getBytes());
         launch(args);
     }
