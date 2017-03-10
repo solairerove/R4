@@ -24,8 +24,8 @@ public class Main extends Application {
 
     public static void main(String[] args) throws IOException {
         Loader loader = new Loader();
-        Map<String, List<Double>> healthy = loader.loadData("file1.txt");
-        Map<String, List<Double>> ill = loader.loadData("file2.txt");
+        Map<String, List<Double>> healthy = loader.loadData("healthy.txt");
+        Map<String, List<Double>> ill = loader.loadData("ill.txt");
         List<VariantnessList> data = new ArrayList<>();
         for(String key : healthy.keySet()){
             List<List<Double>> tmp = Arrays.asList(ill.get(key), healthy.get(key));
